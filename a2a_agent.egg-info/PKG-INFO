@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: a2a-agent
+Version: 0.1.0
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: websockets
+Requires-Dist: msgpack
+Requires-Dist: numpy
+Requires-Dist: pydantic
+Requires-Dist: requests
