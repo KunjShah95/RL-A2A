@@ -5,3 +5,5 @@ msgpack
 numpy
 pydantic
 requests
+openai
+python-dotenv
