@@ -1,65 +1,462 @@
-# Autonomous Agent (A2A) Building in Python
+# Autonomous Agent-to-Agent Protocol (A2A) in Python
 
-This repository provides a comprehensive guide and practical examples for building autonomous agents (A2A) using Python. It covers fundamental concepts, architectures, and implementation details, enabling you to create intelligent agents capable of interacting with their environment and achieving specific goals.
+<p align="center">
+  <img src="docs/assets/a2a_logo.png" alt="A2A Protocol Logo" width="200"/>
+</p>
+
+<p align="center">
+  <a href="#installation"><img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python Version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
+  <a href="https://github.com/KunjShah01/AGENT-TO-AGENT-PROTOCOL-/issues"><img src="https://img.shields.io/github/issues/KunjShah01/AGENT-TO-AGENT-PROTOCOL-" alt="Issues"></a>
+  <a href="https://github.com/KunjShah01/AGENT-TO-AGENT-PROTOCOL-/stargazers"><img src="https://img.shields.io/github/stars/KunjShah01/AGENT-TO-AGENT-PROTOCOL-" alt="Stars"></a>
+</p>
+
+A comprehensive framework, guide, and practical examples for building autonomous agents that communicate, learn, and interact using Python. This repository covers fundamental agent concepts, architectures, implementation details, and a working protocol for agent-to-agent (A2A) communication leveraging modern Python tools and reinforcement learning.
 
 ## Table of Contents
 
-- [Autonomous Agent (A2A) Building in Python](#autonomous-agent-a2a-building-in-python)
+- [Autonomous Agent-to-Agent Protocol (A2A) in Python](#autonomous-agent-to-agent-protocol-a2a-in-python)
   - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
+  - [Overview](#overview)
   - [Key Concepts](#key-concepts)
   - [Agent Architectures](#agent-architectures)
-  - [Implementation Examples](#implementation-examples)
-  - [Getting Started](#getting-started)
+  - [System Architecture](#system-architecture)
+  - [Features](#features)
+    - [A2A Communication Server (`a2a_server.py`)](#a2a-communication-server-a2a_serverpy)
+    - [Agent Implementation Example (`agent_a.py`)](#agent-implementation-example-agent_apy)
+  - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+  - [Quick Start](#quick-start)
+    - [Running the Server](#running-the-server)
+    - [Running an Agent](#running-an-agent)
+    - [Creating Your Own Agent](#creating-your-own-agent)
+  - [API Reference](#api-reference)
+    - [Server API](#server-api)
+      - [Registration Endpoint](#registration-endpoint)
+      - [WebSocket Endpoint](#websocket-endpoint)
+      - [Feedback Endpoint](#feedback-endpoint)
+    - [Agent API](#agent-api)
+      - [AgentClient Class](#agentclient-class)
+  - [Examples](#examples)
+    - [Basic Agent Example](#basic-agent-example)
+    - [Multi-Agent Interaction](#multi-agent-interaction)
+  - [Directory Structure](#directory-structure)
+  - [Contributing](#contributing)
+    - [Contribution Guidelines](#contribution-guidelines)
+  - [Future Roadmap](#future-roadmap)
+    - [Version 0.2.0 (Q3 2025)](#version-020-q3-2025)
+    - [Version 0.3.0 (Q4 2025)](#version-030-q4-2025)
+    - [Version 1.0.0 (Q1 2026)](#version-100-q1-2026)
+    - [Long-term Vision](#long-term-vision)
+  - [Changelog](#changelog)
+    - [v0.1.0 (Current)](#v010-current)
+  - [License](#license)
+  - [References](#references)
+  - [Contact](#contact)
 
-## Introduction
+## Overview
 
-Autonomous agents are software entities that can perceive their environment, reason about their goals, and act to achieve them without direct human intervention. This repository explores the principles and techniques for developing such agents in Python, focusing on practical applications and real-world scenarios.
+Autonomous agents are software entities capable of perceiving their environment, reasoning about goals, and acting to achieve them without direct human intervention. This repository explores the principles and implementation of such agents, focusing on agent-to-agent communication and reinforcement learning for adaptive behaviors.
+
+The A2A Protocol provides a standardized way for autonomous agents to:
+- Register and establish communication channels
+- Exchange observations and actions
+- Learn from feedback through reinforcement learning
+- Coordinate in multi-agent environments
+- Adapt behavior based on experience
 
 ## Key Concepts
 
-- **Perception:** How agents gather information from their environment through sensors or other input mechanisms.
-- **Reasoning:** The cognitive processes that enable agents to make decisions, plan actions, and learn from experience.
-- **Action:** The mechanisms by which agents interact with their environment and execute their plans.
-- **Goals:** The objectives that agents strive to achieve.
-- **Environment:** The context in which agents operate and interact.
+- **Perception:** Gathering information from the environment (e.g., position, velocity, emotion).
+- **Reasoning:** Making decisions, planning, and learning from experience.
+- **Action:** Interacting with the environment or other agents.
+- **Goals:** Objectives that the agent strives to achieve.
+- **Environment:** The context in which agents operate and interact, including other agents.
+- **Reinforcement Learning:** Learning optimal behaviors through trial and error with feedback.
+- **Agent Communication:** Standardized protocols for agents to exchange information.
 
 ## Agent Architectures
 
-This repository explores various agent architectures, including:
+The repository explores and demonstrates several agent architectures:
 
-- **Reactive Agents:** Agents that respond directly to sensory input without complex internal models.
-- **Deliberative Agents:** Agents that use planning and reasoning to achieve their goals.
-- **Hybrid Agents:** Agents that combine reactive and deliberative components for flexibility and efficiency.
-- **Utility-Based Agents:** Agents that make decisions based on maximizing expected utility.
-- **Learning Agents:** Agents that improve their performance over time through experience.
+- **Reactive Agents:** Respond directly to sensory input without maintaining internal state.
+  - Simple stimulus-response mapping
+  - Fast response time
+  - Limited reasoning capability
 
-## Implementation Examples
+- **Deliberative Agents:** Use planning and reasoning for goal achievement.
+  - Maintain internal world model
+  - Plan sequences of actions
+  - Consider future consequences
 
-The repository includes practical examples demonstrating the implementation of different agent architectures in Python. These examples cover various domains, such as:
+- **Hybrid Agents:** Combine reactive and deliberative components.
+  - Reactive layer for immediate responses
+  - Deliberative layer for planning
+  - Coordination between layers
 
-- **Simple Reflex Agents:** Agents that react directly to percepts.
-- **Model-Based Reflex Agents:** Agents that maintain an internal model of the environment.
-- **Goal-Based Agents:** Agents that use search algorithms to achieve specific goals.
-- **Utility-Based Agents:** Agents that make decisions based on a utility function.
-- **Reinforcement Learning Agents:** Agents that learn optimal behavior through trial and error.
+- **Utility-Based Agents:** Make decisions to maximize expected utility.
+  - Assign utility values to states
+  - Choose actions that maximize utility
+  - Balance multiple competing objectives
 
-## Getting Started
+- **Learning Agents:** Improve performance over time via experience and feedback.
+  - Adapt to changing environments
+  - Learn from successes and failures
+  - Optimize behavior through reinforcement
 
-To get started with building your own autonomous agents, follow these steps:
+## System Architecture
 
-1.  Clone the repository:
+This repository implements a practical A2A protocol, combining a FastAPI-based communication server and Python-based agent clients:
 
-    ```
-    git clone https://github.com/your-username/autonomous-agents-python.git
-    ```
+```
+┌─────────────────┐     WebSocket     ┌─────────────────┐
+│                 │◄───Connection────►│                 │
+│   Agent Client  │                   │  A2A Server     │
+│   (agent_a.py)  │                   │ (a2a_server.py) │
+│                 │                   │                 │
+└─────────────────┘                   └─────────────────┘
+        │                                     │
+        │                                     │
+        ▼                                     ▼
+┌─────────────────┐                   ┌─────────────────┐
+│  Observations   │                   │  Reinforcement  │
+│  & Feedback     │                   │  Learning       │
+└─────────────────┘                   └─────────────────┘
+```
 
-2.  Install the required dependencies:
+## Features
 
-    ```
-    pip install -r requirements.txt
-    ```
+### A2A Communication Server (`a2a_server.py`)
 
-3.  Explore the examples and modify them to create your own agents.
+- **Tech Stack:** FastAPI, WebSockets, CORS, Pydantic, NumPy, MessagePack, asyncio
+- **Features:**
+  - **Agent Registration:** `/register` endpoint for agents to obtain session IDs
+  - **WebSocket Endpoint:** `/ws/{session_id}` for real-time agent communication
+  - **Reinforcement Learning:** Simple Q-learning model for each agent, learning optimal actions based on rewards
+  - **Agent Messaging:** Supports both direct and queued messages between agents
+  - **Feedback Processing:** `/feedback` endpoint for agents to send reinforcement rewards
 
-4.  Refer to the documentation for detailed explanations and implementation guidelines.
+### Agent Implementation Example (`agent_a.py`)
+
+- **Tech Stack:** asyncio, websockets, msgpack, requests, NumPy, OpenAI SDK, OpenAI Gym, matplotlib, Flask
+- **Features:**
+  - **Registration:** Registers itself with the server and obtains a session ID
+  - **Observation Loop:** Periodically sends its state (position, velocity, emotion) to the server
+  - **Receives Actions:** Waits for server responses indicating which action to take
+  - **Sends Feedback:** Provides reward feedback to the server for reinforcement learning
+  - **Performance Analysis:** Tracks and analyzes action and reward history
+  - **OpenAI LLM Integration:** Uses GPT models for intelligent action selection and decision making
+  - **OpenAI Gym Support:** Full integration with Gym environments for RL scenarios
+  - **Real-time Visualization:** matplotlib plotting for live reward and performance monitoring
+  - **Web Interface:** Flask-based frontend for browser visualization at localhost:5000
+  - **Multi-Agent Support:** Parallel execution and comparative analysis of multiple agents
+
+### 🆕 OpenAI SDK Integration
+
+- **LLM-Enhanced Decision Making:** Agents can leverage OpenAI's GPT models for context-aware action selection
+- **Environment Simulation:** Full OpenAI Gym integration for standard RL environments (CartPole, MountainCar, etc.)
+- **Intelligent Action Selection:** LLMs analyze environment state and suggest optimal actions
+- **API Key Management:** Secure handling of OpenAI API credentials with environment variable support
+
+### 🆕 Visualization & Monitoring
+
+- **Real-time Plotting:** Live matplotlib charts showing agent rewards, actions, and learning progress
+- **Web Dashboard:** Flask-based interface accessible at `http://localhost:5000` for browser monitoring
+- **Multi-Agent Comparison:** Side-by-side visualization of multiple agents' performance
+- **Q-table Inspection:** Server endpoints `/visualize` and `/visualize_multi` for learning state monitoring
+
+## Installation
+
+### Prerequisites
+
+- Python 3.8+
+- pip (Python package installer)
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/KunjShah01/AGENT-TO-AGENT-PROTOCOL-.git
+   cd AGENT-TO-AGENT-PROTOCOL-
+   ```
+
+2. Install required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   
+   Or install individual packages:
+   ```bash
+   pip install fastapi uvicorn websockets msgpack numpy pydantic requests openai gym matplotlib flask
+   ```
+
+3. Set up your OpenAI API key (required for LLM-enhanced agents):
+   ```bash
+   set OPENAI_API_KEY=your-api-key-here
+   ```
+   
+   Or create a `.env` file in the project root:
+   ```
+   OPENAI_API_KEY=your-api-key-here
+   ```
+
+## Quick Start
+
+### Running the Server
+
+1. Start the A2A server:
+   ```bash
+   uvicorn a2a_server:app --reload
+   ```
+
+2. The server will start on `http://localhost:8000` with the following endpoints:
+   - `/register` - POST endpoint for agent registration
+   - `/ws/{session_id}` - WebSocket endpoint for agent communication
+   - `/feedback` - POST endpoint for reinforcement learning feedback
+   - `/visualize` - GET endpoint for Q-table visualization
+   - `/visualize_multi` - GET endpoint for multi-agent comparison
+
+### Running an Agent
+
+1. In a separate terminal, run the example agent:
+   ```cmd
+   python agent_a.py
+   ```
+
+2. For multi-agent scenarios:
+   ```cmd
+   python agent_a.py --multi-agent
+   ```
+
+3. Access the web visualization at `http://localhost:5000` when the Flask server starts
+
+4. The agent will:
+   - Register with the server
+   - Connect via WebSocket
+   - Send observations
+   - Receive LLM-suggested actions (if OpenAI API key is configured)
+   - Provide reward feedback to improve the server-side RL policy
+   - Display real-time plots of performance metrics
+
+### Creating Your Own Agent
+
+1. Create a new Python file (e.g., `my_agent.py`)
+2. Import the necessary libraries:
+   ```python
+   import asyncio
+   import websockets
+   import msgpack
+   import requests
+   import random
+   ```
+3. Use the `AgentClient` class as a template or create your own implementation
+4. Customize the agent's behavior, state representation, and feedback mechanism
+
+## API Reference
+
+### Server API
+
+#### Registration Endpoint
+
+- **URL:** `/register`
+- **Method:** `POST`
+- **Parameters:**
+  - `agent_id` (string): Unique identifier for the agent
+- **Response:**
+  ```json
+  {
+    "session_id": "uuid-string",
+    "agent_id": "agent-id-string"
+  }
+  ```
+
+#### WebSocket Endpoint
+
+- **URL:** `/ws/{session_id}`
+- **Protocol:** WebSocket
+- **Message Format:** MessagePack serialized objects
+- **Observation Schema:**
+  ```python
+  {
+    "agent_id": str,
+    "session_id": str,
+    "position": dict,
+    "velocity": dict,
+    "emotion": str,
+    "target_agent_id": Optional[str]
+  }
+  ```
+- **Action Schema:**
+  ```python
+  {
+    "agent_id": str,
+    "command": str,
+    "message": str,
+    "success_probability": float
+  }
+  ```
+
+#### Feedback Endpoint
+
+- **URL:** `/feedback`
+- **Method:** `POST`
+- **Body:**
+  ```json
+  {
+    "agent_id": "agent-id-string",
+    "action_id": "action-id-string",
+    "reward": 0.5,
+    "context": {
+      "emotion": "happy"
+    }
+  }
+  ```
+
+### Agent API
+
+#### AgentClient Class
+
+```python
+class AgentClient:
+    def __init__(self, agent_id: str, server_url: str = "localhost:8000", max_retries: int = 3):
+        """Initialize agent client with ID and server URL"""
+        
+    async def register(self) -> str:
+        """Register agent with server and get session ID"""
+        
+    async def send_feedback(self, reward: float, context: Optional[Dict] = None):
+        """Send feedback for reinforcement learning"""
+        
+    async def run(self, iterations: int = 3):
+        """Run the agent's main loop"""
+        
+    def analyze_performance(self):
+        """Analyze agent performance based on history"""
+```
+
+## Examples
+
+### Basic Agent Example
+
+```python
+import asyncio
+from agent_client import AgentClient
+
+async def main():
+    # Create and run agent
+    agent = AgentClient("ExampleAgent", "localhost:8000")
+    await agent.run(iterations=5)
+    
+    # Analyze performance
+    performance = agent.analyze_performance()
+    print(f"\n[{agent.agent_id} Performance]")
+    print(performance)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+### Multi-Agent Interaction
+
+```python
+import asyncio
+from agent_client import AgentClient
+
+async def run_agents():
+    # Create multiple agents
+    agent1 = AgentClient("Agent1", "localhost:8000")
+    agent2 = AgentClient("Agent2", "localhost:8000")
+    
+    # Run agents concurrently
+    await asyncio.gather(
+        agent1.run(iterations=5),
+        agent2.run(iterations=5)
+    )
+
+if __name__ == "__main__":
+    asyncio.run(run_agents())
+```
+
+## Directory Structure
+
+```
+.
+├── a2a_server.py      # The FastAPI-based communication server with agent RL logic
+├── agent_a.py         # Example implementation of an autonomous agent
+├── README.md          # This documentation file
+├── requirements.txt   # Project dependencies
+├── docs/              # Additional documentation
+│   ├── api/           # Detailed API documentation
+│   ├── examples/      # Example code and tutorials
+│   └── assets/        # Images and other assets
+├── tests/             # Test cases
+└── examples/          # Additional example implementations
+```
+
+## Contributing
+
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the repository and clone your fork
+2. Create a new branch for your feature or bugfix
+3. Add your implementation (e.g., new agent, protocol improvement, architecture demo)
+4. Update documentation as needed
+5. Submit a pull request describing your changes
+
+### Contribution Guidelines
+
+- Follow PEP 8 style guidelines for Python code
+- Include docstrings for all functions, classes, and modules
+- Write unit tests for new functionality
+- Update documentation to reflect changes
+- Keep pull requests focused on a single change
+
+## Future Roadmap
+
+### Version 0.2.0 (Q3 2025)
+- **Expand Agent Architectures:** Add more agent types (belief-desire-intention, multi-agent coordination, etc.)
+- **Advanced Reinforcement Learning:** Support for deep RL (DQN, PPO) and more sophisticated reward strategies
+- **Multiple Agent Demos:** Simulate multi-agent environments with competitive/cooperative scenarios
+
+### Version 0.3.0 (Q4 2025)
+- **Visualization:** Real-time dashboards for monitoring agent interactions and learning
+- **Extensible Protocol:** Support for encrypted messages, agent authentication, and richer agent metadata
+- **Documentation Expansion:** Full API docs, example notebooks, and tutorials
+
+### Version 1.0.0 (Q1 2026)
+- **Benchmarking:** Performance and scalability metrics for agent communication
+- **Testing Framework:** Automated tests for server and agent logic
+- **Production Readiness:** Stability improvements and performance optimizations
+
+### Long-term Vision
+- **Cloud Deployment:** Managed service for A2A protocol
+- **Language Agnostic:** Support for multiple programming languages
+- **Integration Ecosystem:** Connectors for popular AI and ML frameworks
+
+## Changelog
+
+### v0.1.0 (Current)
+- Initial release with basic A2A protocol implementation
+- FastAPI-based server with WebSocket support
+- Example agent implementation
+- Simple Q-learning reinforcement learning
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## References
+
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [MessagePack](https://msgpack.org/)
+- [Reinforcement Learning (Q-learning)](https://en.wikipedia.org/wiki/Q-learning)
+- [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
+- [Autonomous Agents](https://en.wikipedia.org/wiki/Intelligent_agent)
+
+## Contact
+
+For questions, suggestions, or collaboration, feel free to:
+- Open an [issue](https://github.com/KunjShah01/AGENT-TO-AGENT-PROTOCOL-/issues)
+- Submit a [pull request](https://github.com/KunjShah01/AGENT-TO-AGENT-PROTOCOL-/pulls)
+- Contact the maintainer: [Kunj Shah](https://github.com/KunjShah01)
