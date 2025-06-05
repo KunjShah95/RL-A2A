@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg) ![Status](https://img.shields.io/badge/status-ready-brightgreen.svg)
 
-**All-in-one file** for building multi-agent systems with OpenAI intelligence, real-time visualization, and advanced communication protocols.
+**Revolutionary multi-agent system** with both **all-in-one simplicity** and **modular flexibility**. Choose your approach: consolidated single-file system or clean modular architecture.
 
 ## ✨ Features
 
@@ -11,87 +11,129 @@
 - 🎨 **3D Visualization** - Interactive Plotly dashboards with Streamlit
 - 📈 **Reinforcement Learning** - Q-learning with adaptive feedback
 - 🔌 **MCP Support** - Model Context Protocol for AI assistants
-- ⚡ **Zero Config** - Auto-installs dependencies and self-configures
+- ⚡ **Dual Architecture** - Choose consolidated or modular approach
+- 🐳 **Production Ready** - Docker support and auto-configuration
 
 ## 🚀 Quick Start
+
+### Option 1: All-in-One (Recommended for Beginners)
 
 ```bash
 # Clone and setup
 git clone https://github.com/KunjShah01/RL-A2A.git
 cd RL-A2A
 
-# One-time setup
+# One-time setup (installs dependencies, creates config)
 python rla2a.py setup
 
 # Start complete system (server + dashboard + 3 demo agents)
 python start.py
 ```
 
-**That's it!** 🎉
+### Option 2: Modular (Recommended for Development)
 
-- **Dashboard**: http://localhost:8501
-- **API**: http://localhost:8000
-- **3D Agent Visualization**: Real-time tracking
-- **AI Agents**: Automatic if `OPENAI_API_KEY` is set
+```bash
+# Install dependencies
+pip install -r requirements.txt
 
-## 📁 What You Get
+# Terminal 1: Start A2A server
+python a2a_server.py
+
+# Terminal 2: Start an agent
+python agent_a.py
+
+# Terminal 3 (optional): Start dashboard
+python rla2a.py dashboard
+```
+
+**Access Points:**
+- 🎨 **Dashboard**: http://localhost:8501
+- 🔗 **API Documentation**: http://localhost:8000/docs
+- 📡 **WebSocket**: ws://localhost:8000/ws/{session_id}
+
+## 📁 Repository Structure
 
 ```
 RL-A2A/
-├── rla2a.py           # 🎯 Everything in one file (2000+ lines)
-├── requirements.txt   # 📦 Dependencies
-├── start.py          # 🚀 Complete system launcher (auto-created)
-├── .env              # ⚙️ Configuration (auto-created)
-└── README.md         # 📚 This file
+├── 🎯 rla2a.py           # All-in-one system (2000+ lines of everything)
+├── 📡 a2a_server.py      # Modular: FastAPI server with RL
+├── 🤖 agent_a.py         # Modular: Example agent implementation
+├── 📚 MCP_GUIDE.md       # Complete MCP integration guide
+├── 📦 requirements.txt   # Dependencies
+├── 📋 README.md         # This file
+├── ⚙️ .env              # Config (auto-created by setup)
+└── 🚀 start.py          # Launcher (auto-created by setup)
 ```
 
 ## 🎮 Usage Options
 
-### Complete System
+### All-in-One System (rla2a.py)
+
 ```bash
-python start.py                    # Everything together
+# Complete system with demo agents
+python rla2a.py server --demo-agents 5
+
+# Interactive dashboard only
+python rla2a.py dashboard
+
+# MCP server for AI assistants
+python rla2a.py mcp
+
+# Generate HTML report
+python rla2a.py report
+
+# Setup environment
+python rla2a.py setup
 ```
 
-### Individual Components
+### Modular System (Individual Components)
+
 ```bash
-python rla2a.py server --demo-agents 5    # A2A server + 5 demo agents
-python rla2a.py dashboard                  # Streamlit dashboard only
-python rla2a.py mcp                        # MCP server for AI assistants
-python rla2a.py report                     # Generate HTML report
+# Advanced server options
+python a2a_server.py                    # Default: localhost:8000
+uvicorn a2a_server:app --host 0.0.0.0   # Public access
+
+# Multiple agents
+python agent_a.py &    # Background agent
+python agent_a.py      # Another agent
+
+# Custom agent development
+cp agent_a.py my_agent.py
+# Edit my_agent.py for custom behavior
 ```
 
-### Advanced
-```bash
-python rla2a.py server --host 0.0.0.0 --port 8080
-```
+## 🧠 OpenAI Intelligence
 
-## 🧠 OpenAI Integration
-
-Add your API key for intelligent agents:
+Add your API key for intelligent agent behavior:
 
 ```bash
-# Edit .env file
-OPENAI_API_KEY=sk-your-key-here
+# Edit .env file (created by setup)
+OPENAI_API_KEY=sk-your-api-key-here
 
-# Agents will automatically use GPT-4o-mini for:
-# • Situation analysis
+# Agents automatically get GPT-4o-mini powers:
+# • Intelligent situation analysis
 # • Strategic decision making
 # • Natural language communication
+# • Adaptive learning from feedback
 ```
 
-## 🎨 Dashboard Features
+## 🎨 Visualization Dashboard
 
-The Streamlit dashboard provides:
+Interactive Streamlit dashboard with:
 
-- **3D Agent Tracking**: Real-time positions with emotion colors
-- **Performance Metrics**: Rewards, emotions, actions analysis
-- **Agent Management**: Register agents, send feedback
-- **Live Updates**: Auto-refresh every 3 seconds
-- **Data Export**: Download agent data as CSV
+- **🌐 3D Agent Tracking** - Real-time positions with emotion-based colors
+- **📊 Performance Metrics** - Rewards, emotions, activity analysis
+- **⚙️ Agent Management** - Register agents, send feedback, control system
+- **📈 Live Analytics** - Auto-refresh charts and system health
+- **💾 Data Export** - Download agent data as CSV
+
+**Available via both approaches:**
+- All-in-one: `python rla2a.py dashboard`
+- Modular: `streamlit run dashboard.py` (if available)
 
 ## 🔌 MCP Integration
 
-Control via AI assistants (Claude, ChatGPT, etc.):
+Control the system via AI assistants (Claude, ChatGPT, etc.):
 
 ```bash
 # Start MCP server
@@ -102,212 +144,170 @@ python rla2a.py mcp
 # args: ["rla2a.py", "mcp"]
 ```
 
-Available commands:
+**Natural language commands:**
 - "Start the RL-A2A system with 5 agents"
 - "Create a new agent called explorer"
-- "Show system status"
+- "Show me the system status"
+
+📖 **Detailed guide**: [MCP_GUIDE.md](MCP_GUIDE.md)
 
 ## 🛠️ Architecture
 
+### System Flow
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   AI Agents     │◄──►│   A2A Server    │◄──►│   Dashboard     │
-│ (OpenAI Client) │    │ (FastAPI + WS)  │    │ (Streamlit UI)  │
+│ (agent_a.py or  │    │ (a2a_server.py  │    │ (Streamlit UI)  │
+│  rla2a.py)      │    │  or rla2a.py)   │    │                 │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
         │                       │                       │
         ▼                       ▼                       ▼
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│ GPT Intelligence│    │ Q-Learning RL   │    │ 3D Visualization│
-│ Decision Making │    │ Agent Training  │    │ Real-time Plots │
+│ • OpenAI Brain  │    │ • Q-Learning RL │    │ • 3D Plots      │
+│ • Decision Logic│    │ • WebSocket Hub │    │ • Metrics       │
+│ • Learning      │    │ • Agent Registry│    │ • Controls      │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
-Everything runs in one Python file: **`rla2a.py`** (2000+ lines)
+### Component Comparison
 
-## 🐳 Docker
+| Feature | All-in-One (`rla2a.py`) | Modular (`a2a_server.py` + `agent_a.py`) |
+|---------|--------------------------|-------------------------------------------|
+| **Setup** | One command | Manual dependency management |
+| **Development** | Harder to modify | Easy to extend individual parts |
+| **Production** | Self-contained | Scalable components |
+| **Learning** | Everything in one place | Clear separation of concerns |
+| **Deployment** | Single file deploy | Docker/container friendly |
+| **Customization** | Modify one large file | Create new agent files |
 
+## 📚 API Reference
+
+### A2A Server Endpoints
+
+| Endpoint | Method | Description | Available In |
+|----------|--------|-------------|--------------|
+| `/` | GET | System status | Both |
+| `/register?agent_id=X` | POST | Register agent | Both |
+| `/agents` | GET | List agents | Both |
+| `/agents/{id}` | GET | Agent details | Modular |
+| `/feedback` | POST | Send RL feedback | Both |
+| `/ws/{session_id}` | WebSocket | Real-time comms | Both |
+| `/health` | GET | Health check | Both |
+
+### MCP Tools
+
+| Tool | Description | Parameters |
+|------|-------------|------------|
+| `start_system` | Start complete system | `agents`, `dashboard` |
+| `create_agent` | Create new agent | `agent_id` |
+
+## 🐳 Docker Deployment
+
+### All-in-One Container
 ```dockerfile
 FROM python:3.11-slim
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 EXPOSE 8000 8501
-CMD ["python", "start.py"]
+CMD ["python", "rla2a.py", "server", "--demo-agents", "3"]
 ```
 
-## 📚 API Reference
+### Multi-Container (Modular)
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  a2a-server:
+    build: .
+    command: python a2a_server.py
+    ports: ["8000:8000"]
+    
+  agent:
+    build: .
+    command: python agent_a.py
+    depends_on: [a2a-server]
+```
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/` | GET | System status |
-| `/register?agent_id=X` | POST | Register new agent |
-| `/agents` | GET | List all agents |
-| `/feedback` | POST | Send RL feedback |
-| `/dashboard` | GET | Dashboard data |
-| `/ws/{session_id}` | WebSocket | Real-time communication |
+## 🔧 Development Guide
+
+### Creating Custom Agents
+
+**Modular approach** (recommended for development):
+```python
+# Copy and modify existing agent
+import agent_a
+
+class MyCustomAgent(agent_a.AgentClient):
+    def execute_action(self, action_command: str) -> float:
+        # Custom action logic
+        return super().execute_action(action_command)
+```
+
+**All-in-one approach:**
+```python
+# Modify rla2a.py directly
+class CustomA2ASystem(A2ASystem):
+    async def get_action(self, agent_id: str, observation: Dict) -> Dict[str, str]:
+        # Custom AI logic
+        return await super().get_action(agent_id, observation)
+```
+
+### Adding New Features
+
+1. **New Agent Capabilities**: Edit `agent_a.py` or create new agent files
+2. **Server Features**: Add endpoints to `a2a_server.py`
+3. **MCP Tools**: Extend MCP functionality in `rla2a.py`
+4. **Visualization**: Add dashboard features via Streamlit integration
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Edit `rla2a.py` (everything is in one file!)
-3. Test with `python rla2a.py setup && python start.py`
-4. Submit pull request
+1. **Fork** the repository
+2. **Choose approach**: Modify `rla2a.py` (all-in-one) or individual files (modular)
+3. **Test thoroughly**: Both approaches should work
+4. **Update docs**: Keep README and guides current
+5. **Submit PR**: Include test instructions
+
+### Development Setup
+```bash
+# Clone for development
+git clone https://github.com/YourUsername/RL-A2A.git
+cd RL-A2A
+
+# Test both approaches
+python rla2a.py setup            # All-in-one
+pip install -r requirements.txt  # Modular
+
+# Run tests
+python a2a_server.py &         # Background server
+python agent_a.py              # Test agent
+python rla2a.py report         # Generate test report
+```
 
 ## 📄 License
 
 MIT License - see [LICENSE](LICENSE) file
 
-## 🆘 Support
+## 🆘 Support & Community
 
 - 🐛 **Issues**: [GitHub Issues](https://github.com/KunjShah01/RL-A2A/issues)
-- 💬 **Questions**: Open a discussion
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/KunjShah01/RL-A2A/discussions)
 - 📧 **Contact**: [Kunj Shah](https://github.com/KunjShah01)
+- 📖 **Detailed MCP Guide**: [MCP_GUIDE.md](MCP_GUIDE.md)
+
+## 🎯 What Makes This Special?
+
+✅ **Dual Architecture** - Choose complexity level  
+✅ **Production Ready** - Used in real applications  
+✅ **Educational** - Learn from clean, documented code  
+✅ **Extensible** - Add your own agent behaviors  
+✅ **AI-Powered** - OpenAI integration out of the box  
+✅ **Visual** - Beautiful real-time dashboards  
+✅ **Standards** - MCP support for AI ecosystem  
 
 ---
 
-**⭐ If this project helps you, please give it a star!**
-- **3D Agent Tracking**: Real-time positions with emotion-based colors
-- **Performance Metrics**: Reward trends, activity levels, system health
-- **Agent Management**: Register new agents, send feedback
-- **Data Export**: Download agent data as CSV
-- **Auto-Refresh**: Live updates every 1-10 seconds
-
-Access at: http://localhost:8501
-
-## 🔌 MCP Integration
-
-Control the system via AI assistants using Model Context Protocol:
-
-```bash
-# Start MCP server
-python rl_a2a_system.py --mode mcp
-
-# Configure your MCP client with:
-# command: python
-# args: ["rl_a2a_system.py", "--mode", "mcp"]
-```
-
-Available MCP commands:
-- "Start the complete A2A system with 5 agents"
-- "Create a new agent called explorer"
-- "Generate a visualization report"
-
-## 🛠️ Development
-
-### System Components
-
-All components are in `rl_a2a_system.py`:
-
-1. **A2AServer**: FastAPI-based communication hub
-2. **OpenAIAgentBrain**: GPT-powered intelligence
-3. **IntelligentAgent**: AI-enhanced agent behavior
-4. **PlotlyVisualizer**: Interactive visualization system
-5. **MCPServer**: Model Context Protocol integration
-6. **RLA2ASystem**: Main orchestrator
-
-### Adding Features
-
-```python
-# Extend rl_a2a_system.py
-class MyCustomAgent(IntelligentAgent):
-    async def custom_behavior(self):
-        # Your custom agent logic
-        pass
-```
-
-## 🐳 Docker Deployment
-
-```dockerfile
-FROM python:3.11-slim
-COPY . /app
-WORKDIR /app
-RUN pip install -r requirements.txt
-EXPOSE 8000 8501
-CMD ["python", "rl_a2a_system.py", "--mode", "complete"]
-```
-    "agent_id": str,
-    "command": str,
-    "message": str,
-    "success_probability": float
-  }
-  ```
-
-#### Feedback Endpoint
-
-- **URL:** `/feedback`
-- **Method:** `POST`
-- **Body:**
-  ```json
-  {
-    "agent_id": "agent-id-string",
-    "action_id": "action-id-string",
-    "reward": 0.5,
-    "context": {
-      "emotion": "happy"
-    }
-  }
-## MCP Integration
-
-### What is MCP?
-
-Model Context Protocol (MCP) is a standardized protocol that enables AI systems to securely connect with external data sources and tools. By adding MCP support to RL-A2A, you can expose your agent communication protocol as tools that other AI systems can use.
-
-### MCP Server Features
-
-The RL-A2A MCP server provides:
-
-#### Tools
-- **register_agent**: Register new agents with the A2A system
-- **send_agent_feedback**: Send reinforcement learning feedback for agent actions
-- **create_agent_observation**: Create agent observation messages
-- **start_a2a_server**: Get commands to start the A2A server
-
-#### Resources
-- **a2a://agents**: Information about currently active agents
-- **a2a://models**: Reinforcement learning model data and progress
-- **a2a://communication**: Agent communication logs and message history
-
-### Quick MCP Setup
-
-1. **Install MCP dependencies:**
-   ```bash
-   python setup_mcp.py
-   ```
-
-2. **Start the A2A server:**
-   ```bash
-   uvicorn a2a_server:app --reload
-   ```
-
-3. **Start the MCP server:**
-   ```bash
-   python start_mcp_server.py
-   ```
-
-4. **Connect MCP clients** (like Claude Desktop, Cline, etc.) using the configuration in `mcp_config.json`
-
-### MCP Configuration
-
-Add this to your MCP client configuration:
-
-```json
-{
-  "mcpServers": {
-    "rl-a2a": {
-      "command": "python",
-      "args": ["mcp_server.py"],
-      "env": {
-## OpenAI Integration
-
-### Intelligent Agent Behavior
-
-Enhance your A2A agents with OpenAI-powered intelligence for natural language understanding, strategic decision making, and adaptive learning.
-
-#### Features
-- **AI-Powered Decision Making**: Agents use GPT models to analyze situations and make intelligent choices
-- **Natural Language Communication**: Agents can communicate in human-readable language
-- **Intelligent Feedback**: AI evaluates action outcomes and provides meaningful reward signals
-- **Adaptive Learning**: Agents learn and improve behavior over time
+**⭐ If this project helps you build amazing multi-agent systems, please give it a star!**
 
 #### Quick Start
 
