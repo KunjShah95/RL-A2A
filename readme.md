@@ -36,7 +36,7 @@ A comprehensive framework, guide, and practical examples for building autonomous
 
 ## Overview
 
-Autonomous agents are software entities capable of perceiving their environment, reasoning about goals, and acting to achieve them without direct human intervention. This repository explores the principles and implementation of such agents, focusing on agent-to-agent communication and reinforcement learning for adaptive behaviors.
+- [MCP Integration](#mcp-integration)
 
 The A2A Protocol provides a standardized way for autonomous agents to:
 - Register and establish communication channels
@@ -246,7 +246,73 @@ This repository implements a practical A2A protocol, combining a FastAPI-based c
       "emotion": "happy"
     }
   }
-  ```
+## MCP Integration
+
+### What is MCP?
+
+Model Context Protocol (MCP) is a standardized protocol that enables AI systems to securely connect with external data sources and tools. By adding MCP support to RL-A2A, you can expose your agent communication protocol as tools that other AI systems can use.
+
+### MCP Server Features
+
+The RL-A2A MCP server provides:
+
+#### Tools
+- **register_agent**: Register new agents with the A2A system
+- **send_agent_feedback**: Send reinforcement learning feedback for agent actions
+- **create_agent_observation**: Create agent observation messages
+- **start_a2a_server**: Get commands to start the A2A server
+
+#### Resources
+- **a2a://agents**: Information about currently active agents
+- **a2a://models**: Reinforcement learning model data and progress
+- **a2a://communication**: Agent communication logs and message history
+
+### Quick MCP Setup
+
+1. **Install MCP dependencies:**
+   ```bash
+   python setup_mcp.py
+   ```
+
+2. **Start the A2A server:**
+   ```bash
+   uvicorn a2a_server:app --reload
+   ```
+
+3. **Start the MCP server:**
+   ```bash
+   python start_mcp_server.py
+   ```
+
+4. **Connect MCP clients** (like Claude Desktop, Cline, etc.) using the configuration in `mcp_config.json`
+
+### MCP Configuration
+
+Add this to your MCP client configuration:
+
+```json
+{
+  "mcpServers": {
+    "rl-a2a": {
+      "command": "python",
+      "args": ["mcp_server.py"],
+      "env": {
+        "A2A_SERVER_URL": "http://localhost:8000"
+      }
+    }
+  }
+}
+```
+
+### Using MCP Tools
+
+Once connected, you can use MCP commands like:
+- "Register a new agent called 'explorer'" 
+- "Send positive feedback for agent action XYZ"
+- "Show me the current active agents"
+- "Create an observation for agent at position (1,2,3)"
+
+
 
 ### Agent API
 
