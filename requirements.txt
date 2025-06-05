@@ -1,0 +1,25 @@
+# RL-A2A System Requirements
+# Core Dependencies
+fastapi>=0.104.0
+uvicorn>=0.24.0
+websockets>=12.0
+msgpack>=1.0.7
+numpy>=1.24.0
+pydantic>=2.0.0
+requests>=2.31.0
+
+# OpenAI Integration
+openai>=1.12.0
+tiktoken>=0.5.0
+
+# Visualization
+matplotlib>=3.7.0
+plotly>=5.17.0
+streamlit>=1.29.0
+pandas>=2.1.0
+
+# MCP Support
+mcp>=1.0.0
+
+# Utilities  
+python-dotenv>=1.0.0
