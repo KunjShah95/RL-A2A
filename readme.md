@@ -37,8 +37,8 @@ A comprehensive framework, guide, and practical examples for building autonomous
 ## Overview
 
 - [MCP Integration](#mcp-integration)
-
-The A2A Protocol provides a standardized way for autonomous agents to:
+- [OpenAI Integration](#openai-integration)
+- [Visualization Dashboard](#visualization-dashboard)
 - Register and establish communication channels
 - Exchange observations and actions
 - Learn from feedback through reinforcement learning
@@ -297,8 +297,145 @@ Add this to your MCP client configuration:
       "command": "python",
       "args": ["mcp_server.py"],
       "env": {
-        "A2A_SERVER_URL": "http://localhost:8000"
-      }
+## OpenAI Integration
+
+### Intelligent Agent Behavior
+
+Enhance your A2A agents with OpenAI-powered intelligence for natural language understanding, strategic decision making, and adaptive learning.
+
+#### Features
+- **AI-Powered Decision Making**: Agents use GPT models to analyze situations and make intelligent choices
+- **Natural Language Communication**: Agents can communicate in human-readable language
+- **Intelligent Feedback**: AI evaluates action outcomes and provides meaningful reward signals
+- **Adaptive Learning**: Agents learn and improve behavior over time
+
+#### Quick Start
+
+1. **Set your OpenAI API key:**
+   ```bash
+   export OPENAI_API_KEY="your-api-key-here"
+   ```
+
+2. **Create intelligent agents:**
+   ```python
+   from openai_integration import IntelligentAgent, OpenAIEnhancedA2ASystem
+   
+   # Create an intelligent agent
+   agent = IntelligentAgent("smart_explorer")
+   await agent.register_with_a2a()
+   
+   # Run intelligent simulation
+   system = OpenAIEnhancedA2ASystem()
+   await system.run_multi_agent_simulation(num_agents=3, iterations=5)
+   ```
+
+3. **Start OpenAI demo:**
+   ```bash
+   python openai_integration.py
+   ```
+
+#### Available Models
+- **gpt-4o-mini** (default): Fast and cost-effective
+- **gpt-4**: Most capable for complex reasoning
+- **gpt-3.5-turbo**: Balanced performance and cost
+
+## Visualization Dashboard
+
+### Real-Time Agent Monitoring
+
+Visualize your agents in real-time with interactive 3D plots, performance metrics, and system analytics.
+
+#### Features
+- **3D Agent Tracking**: See agent positions, movements, and emotions in real-time
+- **Performance Metrics**: Monitor rewards, learning progress, and system health
+- **Interactive Dashboard**: Streamlit-based web interface with live updates
+- **Communication Visualization**: Track inter-agent message flows
+- **Export Reports**: Generate HTML reports with static visualizations
+
+#### Visualization Types
+
+1. **Streamlit Dashboard** (Recommended)
+   ```bash
+   streamlit run visualization.py -- streamlit
+   # or
+   python start_dashboard.py
+   ```
+   - Real-time updates
+   - Interactive controls
+   - Multi-panel layout
+   - Web-based access at http://localhost:8501
+
+2. **Matplotlib Animation**
+   ```bash
+   python visualization.py matplotlib
+   ```
+   - Desktop application
+   - Smooth real-time animation
+   - Customizable views
+
+3. **Static HTML Reports**
+   ```bash
+   python visualization.py
+   ```
+   - Generates `a2a_visualization_report.html`
+   - Plotly-powered interactive charts
+   - Shareable reports
+
+#### Dashboard Components
+
+- **Agent Positions**: 3D scatter plot with emotion-based colors
+- **Velocity Vectors**: Real-time movement direction and speed
+- **Reward Tracking**: Learning progress over time
+- **Agent Status Table**: Detailed information for each agent
+- **Communication Network**: Message flow visualization
+- **System Metrics**: Performance and health indicators
+
+
+### Using MCP Tools
+
+Once connected, you can use MCP commands like:
+- "Register a new agent called 'explorer'" 
+- "Send positive feedback for agent action XYZ"
+- "Show me the current active agents"
+- "Create an observation for agent at position (1,2,3)"
+- "Create an intelligent agent with OpenAI"
+- "Start the visualization dashboard"
+- "Generate a visualization report"
+
+### Enhanced MCP Server
+
+The enhanced MCP server (`mcp_server_enhanced.py`) provides additional tools:
+
+#### OpenAI Tools
+- **create_intelligent_agent**: Create AI-powered agents
+- **run_intelligent_simulation**: Run multi-agent AI simulations
+
+#### Visualization Tools  
+- **start_visualization_dashboard**: Launch real-time dashboard
+- **generate_visualization_report**: Create HTML reports
+- **capture_agent_screenshot**: Take system snapshots
+
+#### System Tools
+- **setup_complete_system**: One-command full system setup
+
+### Complete Setup
+
+For the full experience with all features:
+
+```bash
+# Complete setup with all features
+python setup_full.py
+
+# Set your OpenAI API key
+export OPENAI_API_KEY="your-key-here"
+
+# Start everything
+python start_a2a.py &          # A2A server
+python start_dashboard.py &    # Visualization  
+python start_openai_demo.py &  # AI agents
+```
+
+
     }
   }
 }
