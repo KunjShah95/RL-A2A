@@ -1,4 +1,4 @@
-# Autonomous Agent-to-Agent Protocol (A2A) in Python
+# RL-A2A: Complete Agent-to-Agent Communication System
 
 <p align="center">
   <img src="docs/assets/a2a_logo.png" alt="A2A Protocol Logo" width="200"/>
@@ -12,7 +12,7 @@
 </p>
 
 A comprehensive framework, guide, and practical examples for building autonomous agents that communicate, learn, and interact using Python. This repository covers fundamental agent concepts, architectures, implementation details, and a working protocol for agent-to-agent (A2A) communication leveraging modern Python tools and reinforcement learning.
-
+A complete framework for building autonomous agents with OpenAI-powered intelligence, real-time visualization, and multi-agent communication. Features include reinforcement learning, interactive dashboards, and MCP integration - all in a clean, consolidated codebase.
 ## Table of Contents
 
 - [Overview](#overview)
@@ -22,91 +22,91 @@ A comprehensive framework, guide, and practical examples for building autonomous
 - [Features](#features)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
-- [API Reference](#api-reference)
-  - [Server API](#server-api)
-  - [Agent API](#agent-api)
-- [Examples](#examples)
-- [Directory Structure](#directory-structure)
-- [Contributing](#contributing)
-- [Future Roadmap](#future-roadmap)
-- [Changelog](#changelog)
-- [License](#license)
-- [References](#references)
-- [Contact](#contact)
+## ✨ Key Features
 
-## Overview
+- 🤖 **Multi-Agent Communication**: WebSocket-based real-time agent coordination
+- 🧠 **OpenAI Intelligence**: GPT-powered decision making and natural language processing
+- 🎨 **3D Visualization**: Real-time interactive dashboards with Plotly and Streamlit
+- 📈 **Reinforcement Learning**: Q-learning with intelligent feedback systems
+- 🔌 **MCP Integration**: Model Context Protocol support for AI assistant integration
+- 🐳 **Easy Deployment**: Single-file system with Docker support
 
-- [MCP Integration](#mcp-integration)
-- [OpenAI Integration](#openai-integration)
-- [Visualization Dashboard](#visualization-dashboard)
-- Register and establish communication channels
-- Exchange observations and actions
-- Learn from feedback through reinforcement learning
-- Coordinate in multi-agent environments
-- Adapt behavior based on experience
+## 🚀 Quick Start
 
-## Key Concepts
+### Prerequisites
+- Python 3.8+
+- OpenAI API key (optional, for AI features)
 
-- **Perception:** Gathering information from the environment (e.g., position, velocity, emotion).
-- **Reasoning:** Making decisions, planning, and learning from experience.
-- **Action:** Interacting with the environment or other agents.
-- **Goals:** Objectives that the agent strives to achieve.
-- **Environment:** The context in which agents operate and interact, including other agents.
-- **Reinforcement Learning:** Learning optimal behaviors through trial and error with feedback.
-- **Agent Communication:** Standardized protocols for agents to exchange information.
+### Installation
 
-## Agent Architectures
+```bash
+# Clone the repository
+git clone https://github.com/KunjShah01/RL-A2A.git
+cd RL-A2A
 
-The repository explores and demonstrates several agent architectures:
+# Run setup (installs dependencies and creates config)
+python setup.py
 
-- **Reactive Agents:** Respond directly to sensory input without maintaining internal state.
-  - Simple stimulus-response mapping
-  - Fast response time
-  - Limited reasoning capability
-
-- **Deliberative Agents:** Use planning and reasoning for goal achievement.
-  - Maintain internal world model
-  - Plan sequences of actions
-  - Consider future consequences
-
-- **Hybrid Agents:** Combine reactive and deliberative components.
-  - Reactive layer for immediate responses
-  - Deliberative layer for planning
-  - Coordination between layers
-
-- **Utility-Based Agents:** Make decisions to maximize expected utility.
-  - Assign utility values to states
-  - Choose actions that maximize utility
-  - Balance multiple competing objectives
-
-- **Learning Agents:** Improve performance over time via experience and feedback.
-  - Adapt to changing environments
-  - Learn from successes and failures
-  - Optimize behavior through reinforcement
-
-## System Architecture
-
-This repository implements a practical A2A protocol, combining a FastAPI-based communication server and Python-based agent clients:
-
-```
-┌─────────────────┐     WebSocket     ┌─────────────────┐
-│                 │◄───Connection────►│                 │
-│   Agent Client  │                   │  A2A Server     │
-│   (agent_a.py)  │                   │ (a2a_server.py) │
-│                 │                   │                 │
-└─────────────────┘                   └─────────────────┘
-        │                                     │
-        │                                     │
-        ▼                                     ▼
-┌─────────────────┐                   ┌─────────────────┐
-│  Observations   │                   │  Reinforcement  │
-│  & Feedback     │                   │  Learning       │
-└─────────────────┘                   └─────────────────┘
+# Optional: Set your OpenAI API key
+# Edit .env file: OPENAI_API_KEY=your-key-here
 ```
 
-## Features
+### Run the System
 
-### A2A Communication Server (`a2a_server.py`)
+**Complete System** (Recommended):
+```bash
+python start_complete.py
+# Opens dashboard at http://localhost:8501
+```
+
+**Individual Components:**
+```bash
+# A2A Server only
+python start_server.py
+
+# Dashboard only
+python start_dashboard.py
+```
+
+**Advanced Usage:**
+```bash
+# All options available
+python rl_a2a_system.py --mode complete --agents 5
+python rl_a2a_system.py --mode server --host 0.0.0.0 --port 8000
+python rl_a2a_system.py --mode mcp  # MCP server
+python rl_a2a_system.py --mode demo # Generate demo report
+```
+
+## 📁 Project Structure
+
+```
+RL-A2A/
+├── rl_a2a_system.py     # 🎯 Main system (all features combined)
+├── dashboard.py         # 🎨 Streamlit dashboard
+├── setup.py            # ⚙️ Simple setup script
+├── requirements.txt    # 📦 Dependencies
+├── .env               # 🔧 Configuration (created by setup)
+├── start_*.py         # 🚀 Startup scripts (created by setup)
+└── README.md          # 📚 This file
+```
+
+## 🎮 How It Works
+
+### Architecture Overview
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   AI Agents     │◄──►│   A2A Server    │◄──►│   Dashboard     │
+│ (OpenAI Client) │    │ (WebSocket Hub) │    │ (Streamlit UI)  │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+        │                       │                       │
+        ▼                       ▼                       ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│ GPT Intelligence│    │ Q-Learning RL   │    │ 3D Visualization│
+│ Decision Making │    │ Agent Training  │    │ Real-time Plots │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
 
 - **Tech Stack:** FastAPI, WebSockets, CORS, Pydantic, NumPy, MessagePack, asyncio
 - **Features:**
@@ -147,84 +147,84 @@ This repository implements a practical A2A protocol, combining a FastAPI-based c
    ```
 
 ## Quick Start
+## 🧠 OpenAI Integration
 
-### Running the Server
+Agents powered by GPT models for intelligent behavior:
 
-1. Start the A2A server:
-   ```bash
-   uvicorn a2a_server:app --reload
-   ```
+```python
+# Set API key in .env file
+OPENAI_API_KEY=sk-your-key-here
 
-2. The server will start on `http://localhost:8000` with the following endpoints:
-   - `/register` - POST endpoint for agent registration
-   - `/ws/{session_id}` - WebSocket endpoint for agent communication
-   - `/feedback` - POST endpoint for reinforcement learning feedback
+# Agents automatically get:
+# • Situation analysis
+# • Strategic decision making
+# • Natural language communication
+# • Adaptive learning from feedback
+```
 
-### Running an Agent
+## 📊 Visualization Dashboard
 
-1. In a separate terminal, run the example agent:
-   ```bash
-   python agent_a.py
-   ```
+Interactive Streamlit dashboard featuring:
 
-2. The agent will:
-   - Register with the server
-   - Connect via WebSocket
-   - Send observations
-   - Receive suggested actions
-   - Provide reward feedback to improve the server-side RL policy
+- **3D Agent Tracking**: Real-time positions with emotion-based colors
+- **Performance Metrics**: Reward trends, activity levels, system health
+- **Agent Management**: Register new agents, send feedback
+- **Data Export**: Download agent data as CSV
+- **Auto-Refresh**: Live updates every 1-10 seconds
 
-### Creating Your Own Agent
+Access at: http://localhost:8501
 
-1. Create a new Python file (e.g., `my_agent.py`)
-2. Import the necessary libraries:
-   ```python
-   import asyncio
-   import websockets
-   import msgpack
-   import requests
-   import random
-   ```
-3. Use the `AgentClient` class as a template or create your own implementation
-4. Customize the agent's behavior, state representation, and feedback mechanism
+## 🔌 MCP Integration
 
-## API Reference
+Control the system via AI assistants using Model Context Protocol:
 
-### Server API
+```bash
+# Start MCP server
+python rl_a2a_system.py --mode mcp
 
-#### Registration Endpoint
+# Configure your MCP client with:
+# command: python
+# args: ["rl_a2a_system.py", "--mode", "mcp"]
+```
 
-- **URL:** `/register`
-- **Method:** `POST`
-- **Parameters:**
-  - `agent_id` (string): Unique identifier for the agent
-- **Response:**
-  ```json
-  {
-    "session_id": "uuid-string",
-    "agent_id": "agent-id-string"
-  }
-  ```
+Available MCP commands:
+- "Start the complete A2A system with 5 agents"
+- "Create a new agent called explorer"
+- "Generate a visualization report"
 
-#### WebSocket Endpoint
+## 🛠️ Development
 
-- **URL:** `/ws/{session_id}`
-- **Protocol:** WebSocket
-- **Message Format:** MessagePack serialized objects
-- **Observation Schema:**
-  ```python
-  {
-    "agent_id": str,
-    "session_id": str,
-    "position": dict,
-    "velocity": dict,
-    "emotion": str,
-    "target_agent_id": Optional[str]
-  }
-  ```
-- **Action Schema:**
-  ```python
-  {
+### System Components
+
+All components are in `rl_a2a_system.py`:
+
+1. **A2AServer**: FastAPI-based communication hub
+2. **OpenAIAgentBrain**: GPT-powered intelligence
+3. **IntelligentAgent**: AI-enhanced agent behavior
+4. **PlotlyVisualizer**: Interactive visualization system
+5. **MCPServer**: Model Context Protocol integration
+6. **RLA2ASystem**: Main orchestrator
+
+### Adding Features
+
+```python
+# Extend rl_a2a_system.py
+class MyCustomAgent(IntelligentAgent):
+    async def custom_behavior(self):
+        # Your custom agent logic
+        pass
+```
+
+## 🐳 Docker Deployment
+
+```dockerfile
+FROM python:3.11-slim
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+EXPOSE 8000 8501
+CMD ["python", "rl_a2a_system.py", "--mode", "complete"]
+```
     "agent_id": str,
     "command": str,
     "message": str,
