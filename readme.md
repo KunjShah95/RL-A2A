@@ -166,7 +166,7 @@ CMD ["python", "rla2a.py", "server", "--demo-agents", "3"]
 ## 🤝 Contributing
 
 1. **Fork** the repository
-└─────────────────┘    └─────────────────┘    └─────────────────┘
+
 ```
 
 ### Component Comparison
@@ -436,9 +436,7 @@ python start_openai_demo.py &  # AI agents
 ```
 
 
-    }
-  }
-}
+
 ```
 
 ### Using MCP Tools
