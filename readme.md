@@ -127,21 +127,12 @@ Interactive Streamlit dashboard with:
 - **📈 Live Analytics** - Auto-refresh charts and system health
 - **💾 Data Export** - Download agent data as CSV
 
-**Available via both approaches:**
-- All-in-one: `python rla2a.py dashboard`
-- Modular: `streamlit run dashboard.py` (if available)
-
 ## 🔌 MCP Integration
 
 Control the system via AI assistants (Claude, ChatGPT, etc.):
 
 ```bash
-# Start MCP server
-python rla2a.py mcp
-
-# Configure your MCP client:
-# command: python
-# args: ["rla2a.py", "mcp"]
+python rla2a.py mcp  # Start MCP server
 ```
 
 **Natural language commands:**
@@ -151,21 +142,30 @@ python rla2a.py mcp
 
 📖 **Detailed guide**: [MCP_GUIDE.md](MCP_GUIDE.md)
 
-## 🛠️ Architecture
+## 🐳 Docker Deployment
 
-### System Flow
+```dockerfile
+FROM python:3.11-slim
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+EXPOSE 8000 8501
+CMD ["python", "rla2a.py", "server", "--demo-agents", "3"]
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   AI Agents     │◄──►│   A2A Server    │◄──►│   Dashboard     │
-│ (agent_a.py or  │    │ (a2a_server.py  │    │ (Streamlit UI)  │
-│  rla2a.py)      │    │  or rla2a.py)   │    │                 │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-        │                       │                       │
-        ▼                       ▼                       ▼
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│ • OpenAI Brain  │    │ • Q-Learning RL │    │ • 3D Plots      │
-│ • Decision Logic│    │ • WebSocket Hub │    │ • Metrics       │
-│ • Learning      │    │ • Agent Registry│    │ • Controls      │
+
+## 📚 API Reference
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | System status |
+| `/register?agent_id=X` | POST | Register agent |
+| `/agents` | GET | List agents |
+| `/feedback` | POST | Send RL feedback |
+| `/ws/{session_id}` | WebSocket | Real-time comms |
+
+## 🤝 Contributing
+
+1. **Fork** the repository
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
