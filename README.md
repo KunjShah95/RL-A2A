@@ -161,60 +161,60 @@ The combined `rla2a.py` now includes:
 - **Production Ready**: Comprehensive logging, error handling, and deployment
 
 ---
-| `/` | GET | System status |
-| `/register?agent_id=X` | POST | Register agent |
-| `/agents` | GET | List agents |
-| `/feedback` | POST | Send RL feedback |
-| `/ws/{session_id}` | WebSocket | Real-time comms |
 
-## 🤝 Contributing
+## 🚀 Updated Quick Start (Combined System)
 
-1. **Fork** the repository
+### 1. Clone and Setup
+```bash
+git clone https://github.com/KunjShah01/RL-A2A.git
+cd RL-A2A
+git checkout enhanced-integration
 
+# Setup environment (installs dependencies automatically)
+python rla2a.py setup
 ```
 
-## Architecture Options
-
-### 🔧 All-in-One (`rla2a.py`) - *Recommended for Beginners*
-- ✅ **Setup**: One command installation
-- ✅ **Development**: Everything in one place  
-- ✅ **Production**: Self-contained deployment
-- ✅ **Learning**: Complete system overview
-- ⚠️ **Customization**: Requires modifying large file
-
-### ⚡ Modular (`a2a_server.py` + `agent_a.py`) - *Recommended for Development*
-- ✅ **Setup**: Manual dependency management
-- ✅ **Development**: Easy to extend individual parts
-- ✅ **Production**: Scalable components
-- ✅ **Learning**: Clear separation of concerns
-- ✅ **Deployment**: Docker/container friendly
-- ✅ **Customization**: Create new agent files easily
-
-
-![Architecture Comparison](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/750b6068-343b-40b8-9179-65c5c78feee5.png)
-
-#### Core Endpoints (Available in Both Architectures)
-- **GET** `/` - System status
-- **POST** `/register?agent_id=X` - Register agent
-- **GET** `/agents` - List agents
-- **POST** `/feedback` - Send RL feedback
-- **WebSocket** `/ws/{session_id}` - Real-time communications
-- **GET** `/health` - Health check
-
-#### Additional Modular Endpoints
-- **GET** `/agents/{id}` - Detailed agent information
-
-### MCP Integration Tools
-
-**Available Commands:**
-- `start_system` - Launch complete system (parameters: `agents`, `dashboard`)
-- `create_agent` - Create new agent instance (parameter: `agent_id`)
-
-WORKDIR /app
-RUN pip install -r requirements.txt
-EXPOSE 8000 8501
-CMD ["python", "rla2a.py", "server", "--demo-agents", "3"]
+### 2. Configure API Keys
+Edit `.env` file with your API keys:
+```bash
+OPENAI_API_KEY=your-openai-key
+ANTHROPIC_API_KEY=your-claude-key
+GOOGLE_API_KEY=your-gemini-key
 ```
+
+### 3. Start the System
+```bash
+# Start server with 5 demo agents
+python rla2a.py server --demo-agents 5
+
+# In another terminal, start the dashboard
+python rla2a.py dashboard
+```
+
+### 4. Access the System
+- 🌐 **Dashboard**: http://localhost:8501
+- 📄 **API Docs**: http://localhost:8000/docs
+- 📊 **System Report**: `python rla2a.py report`
+
+**That's it! The combined system includes everything! 🎉**
+
+---
+
+## 📊 System Comparison
+
+| Feature | Original | Enhanced Branch | **Combined rla2a.py** |
+|---------|----------|-----------------|----------------------|
+| Agent Communication | ✅ | ✅ | ✅ |
+| OpenAI Integration | ✅ | ✅ | ✅ |
+| Multi-AI Providers | ❌ | ✅ | ✅ |
+| Enhanced Security | ❌ | ✅ | ✅ |
+| Smart Dependencies | ❌ | ❌ | ✅ |
+| 3D Visualization | ✅ | ✅ | ✅ |
+| Auto Setup | ✅ | ❌ | ✅ |
+| Production Ready | ❌ | ✅ | ✅ |
+| One File Solution | ✅ | ❌ | ✅ |
+
+**🏆 Winner: Combined `rla2a.py` - Best of both worlds!**
 
 ### Multi-Container (Modular)
 ```yaml
