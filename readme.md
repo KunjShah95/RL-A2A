@@ -281,13 +281,13 @@ pip install -r requirements.txt  # Modular
 # Run tests
 python a2a_server.py &         # Background server
 python agent_a.py              # Test agent
-python rla2a.py report         # Generate test report
-```
-1. **Fork** the repository
-2. **Choose approach**: Modify `rla2a.py` (all-in-one) or individual files (modular)
-3. **Test thoroughly**: Both approaches should work
-4. **Update docs**: Keep README and guides current
-5. **Submit PR**: Include test instructions
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file
+
+## 🆘 Support & Community
+
 ## 🆘 Support & Community
 
 - 🐛 **Issues**: [GitHub Issues](https://github.com/KunjShah01/RL-A2A/issues)
