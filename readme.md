@@ -169,44 +169,44 @@ CMD ["python", "rla2a.py", "server", "--demo-agents", "3"]
 
 ```
 
-### Component Comparison
+## Architecture Options
 
-| Feature | All-in-One (`rla2a.py`) | Modular (`a2a_server.py` + `agent_a.py`) |
-|---------|--------------------------|-------------------------------------------|
-| **Setup** | One command | Manual dependency management |
-| **Development** | Harder to modify | Easy to extend individual parts |
-| **Production** | Self-contained | Scalable components |
-| **Learning** | Everything in one place | Clear separation of concerns |
-| **Deployment** | Single file deploy | Docker/container friendly |
-| **Customization** | Modify one large file | Create new agent files |
+### 🔧 All-in-One (`rla2a.py`) - *Recommended for Beginners*
+- ✅ **Setup**: One command installation
+- ✅ **Development**: Everything in one place  
+- ✅ **Production**: Self-contained deployment
+- ✅ **Learning**: Complete system overview
+- ⚠️ **Customization**: Requires modifying large file
+
+### ⚡ Modular (`a2a_server.py` + `agent_a.py`) - *Recommended for Development*
+- ✅ **Setup**: Manual dependency management
+- ✅ **Development**: Easy to extend individual parts
+- ✅ **Production**: Scalable components
+- ✅ **Learning**: Clear separation of concerns
+- ✅ **Deployment**: Docker/container friendly
+- ✅ **Customization**: Create new agent files easily
 
 ## 📚 API Reference
 
 ### A2A Server Endpoints
 
-| Endpoint | Method | Description | Available In |
-|----------|--------|-------------|--------------|
-| `/` | GET | System status | Both |
-| `/register?agent_id=X` | POST | Register agent | Both |
-| `/agents` | GET | List agents | Both |
-| `/agents/{id}` | GET | Agent details | Modular |
-| `/feedback` | POST | Send RL feedback | Both |
-| `/ws/{session_id}` | WebSocket | Real-time comms | Both |
-| `/health` | GET | Health check | Both |
+#### Core Endpoints (Available in Both Architectures)
+- **GET** `/` - System status
+- **POST** `/register?agent_id=X` - Register agent
+- **GET** `/agents` - List agents
+- **POST** `/feedback` - Send RL feedback
+- **WebSocket** `/ws/{session_id}` - Real-time communications
+- **GET** `/health` - Health check
 
-### MCP Tools
+#### Additional Modular Endpoints
+- **GET** `/agents/{id}` - Detailed agent information
 
-| Tool | Description | Parameters |
-|------|-------------|------------|
-| `start_system` | Start complete system | `agents`, `dashboard` |
-| `create_agent` | Create new agent | `agent_id` |
+### MCP Integration Tools
 
-## 🐳 Docker Deployment
+**Available Commands:**
+- `start_system` - Launch complete system (parameters: `agents`, `dashboard`)
+- `create_agent` - Create new agent instance (parameter: `agent_id`)
 
-### All-in-One Container
-```dockerfile
-FROM python:3.11-slim
-COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 EXPOSE 8000 8501
