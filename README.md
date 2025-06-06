@@ -225,40 +225,40 @@ python rla2a.py dashboard
 ![Architecture Comparison](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/20410dab-5eac-41fc-81f5-6fd222091b86.png)
 
 #### 🔧 All-in-One (`rla2a.py`) - *Recommended for Beginners*
-- ✅ **Setup**: One command installation
-- ✅ **Development**: Everything in one place
-- ✅ **Production**: Self-contained deployment
-- ✅ **Learning**: Complete system overview
-- ⚠️ **Customization**: Requires modifying large file
+- ✅ **Setup**: One command installation and auto-dependency management
+- ✅ **Development**: Everything in one place with smart fallbacks
+- ✅ **Production**: Self-contained deployment with security features
+- ✅ **Learning**: Complete system overview with enhanced docs
+- ✅ **Multi-AI**: OpenAI, Claude, Gemini support built-in
 
 #### ⚡ Modular (`a2a_server.py` + `agent_a.py`) - *Recommended for Development*
-- ✅ **Setup**: Manual dependency management
-- ✅ **Development**: Easy to extend individual parts
-- ✅ **Production**: Scalable components
+- ✅ **Setup**: Manual dependency management for fine control
+- ✅ **Development**: Easy to extend individual components
+- ✅ **Production**: Scalable microservice architecture
 - ✅ **Learning**: Clear separation of concerns
 - ✅ **Deployment**: Docker/container friendly
 - ✅ **Customization**: Create new agent files easily
 
-### 🎮 Command Options
+### 🎮 Enhanced Command Options
 
-#### All-in-One System Commands
+#### All-in-One Combined System Commands
 ```bash
-# Complete system with demo agents
+# Complete system with demo agents (with multi-AI support)
 python rla2a.py server --demo-agents 5
 
-# Interactive dashboard only
+# Enhanced interactive dashboard with security monitoring
 python rla2a.py dashboard
 
-# MCP server for AI assistants
+# MCP server for AI assistant integration
 python rla2a.py mcp
 
-# Generate comprehensive HTML report
+# Generate comprehensive HTML system report
 python rla2a.py report
 
-# Setup environment and dependencies
+# Smart environment setup with dependency management
 python rla2a.py setup
 
-# Show system information
+# Show detailed system information and capabilities
 python rla2a.py info
 ```
 
@@ -273,8 +273,8 @@ python agent_a.py &    # Background agent
 python agent_a.py      # Another agent
 
 # Custom agent development
-cp agent_a.py my_agent.py
-# Edit my_agent.py for custom behavior
+cp agent_a.py my_custom_agent.py
+# Edit my_custom_agent.py for custom behavior
 ```
 
 ## 🧮 Multi-AI Intelligence
