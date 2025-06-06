@@ -13,9 +13,9 @@ RL-A2A aims to democratize multi-agent system development by providing a compreh
 - Deliver comprehensive visualization and monitoring capabilities
 - Enable seamless integration with AI assistants through MCP support
 
-![RL-A2A System Capabilities](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/c78959fd-b966-4e97-8d28-8a158d9bf6d0.png)
+![RL-A2A System Capabilities](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/2f11457e-e527-4a9d-8aa4-e55a883d6aba.png)
+![RL-A2A Core Features](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/5da08f4d-c65e-42a2-a5e5-582d02c7fc22.png)
 
-![RL-A2A Core Features](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/85c382fd-39a1-408c-9af2-86932736eb52.png)
 
 ## ✨ Features
 
@@ -51,20 +51,22 @@ pip install -r requirements.txt
 - 🔗 **API Documentation**: http://localhost:8000/docs
 - 📡 **WebSocket**: ws://localhost:8000/ws/{session_id}
 
+
 ## 📁 Repository Structure
 
 ```
 RL-A2A/
-├── 🎯 rla2a.py           # All-in-one system (2000+ lines of everything)
-├── 📡 a2a_server.py      # Modular: FastAPI server with RL
-├── 🤖 agent_a.py         # Modular: Example agent implementation
-├── 📚 MCP_GUIDE.md       # Complete MCP integration guide
-├── 📦 requirements.txt   # Dependencies
-├── 📋 README.md         # This file
-├── ⚙️ .env              # Config (auto-created by setup)
-└── 🚀 start.py          # Launcher (auto-created by setup)
+├── rla2a.py           # All-in-one system (2000+ lines of everything)
+├── a2a_server.py      # Modular: FastAPI server with RL
+├── agent_a.py         # Modular: Example agent implementation
+├── MCP_GUIDE.md       # Complete MCP integration guide
+├── requirements.txt   # Dependencies
+├── README.md          # This file
+├── .env               # Config (auto-created by setup)
+└── start.py           # Launcher (auto-created by setup)
 ```
 
+---
 ## 🎮 Usage Options
 
 ### All-in-One System (rla2a.py)
@@ -187,8 +189,7 @@ CMD ["python", "rla2a.py", "server", "--demo-agents", "3"]
 - ✅ **Customization**: Create new agent files easily
 
 
-![Architecture Comparison](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/20410dab-5eac-41fc-81f5-6fd222091b86.png)
-
+![Architecture Comparison](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/750b6068-343b-40b8-9179-65c5c78feee5.png)
 
 #### Core Endpoints (Available in Both Architectures)
 - **GET** `/` - System status
