@@ -95,44 +95,44 @@ DEFAULT_AI_PROVIDER=openai
 MAX_AGENTS=100
 DEBUG=false
 ```
-uvicorn a2a_server:app --host 0.0.0.0   # Public access
 
-# Multiple agents
-python agent_a.py &    # Background agent
-python agent_a.py      # Another agent
+### 3. Enhanced System Execution
 
-# Custom agent development
-cp agent_a.py my_agent.py
-# Edit my_agent.py for custom behavior
-```
-
-## 🧠 OpenAI Intelligence
-
-Add your API key for intelligent agent behavior:
-
+**Start the Enhanced A2A Server with Security:**
 ```bash
-# Edit .env file (created by setup)
-OPENAI_API_KEY=sk-your-api-key-here
-
-# Agents automatically get GPT-4o-mini powers:
-# • Intelligent situation analysis
-# • Strategic decision making
-# • Natural language communication
-# • Adaptive learning from feedback
+python rla2a_enhanced.py server --demo-agents 3
 ```
 
-## 🎨 Visualization Dashboard
+**Start the Enhanced Dashboard with Security Monitoring:**
+```bash
+python rla2a_enhanced.py dashboard
+```
 
-Interactive Streamlit dashboard with:
+**Access Enhanced Features:**
+- 🌐 **Enhanced Dashboard**: http://localhost:8501 (with security monitoring)
+- 🔗 **Secure API Documentation**: http://localhost:8000/docs
+- 📡 **Secure WebSocket**: ws://localhost:8000/ws/{session_id}
 
-- **🌐 3D Agent Tracking** - Real-time positions with emotion-based colors
-- **📊 Performance Metrics** - Rewards, emotions, activity analysis
-- **⚙️ Agent Management** - Register agents, send feedback, control system
-- **📈 Live Analytics** - Auto-refresh charts and system health
-- **💾 Data Export** - Download agent data as CSV
+---
 
-## 🔌 MCP Integration
+## 📁 Enhanced Repository Structure
 
+```
+RL-A2A/
+├── rla2a_enhanced.py       # Enhanced secure system with multi-AI support
+├── rla2a.py               # Original system (deprecated in favor of enhanced)
+├── a2a_server.py          # Modular: FastAPI server with RL
+├── agent_a.py             # Modular: Example agent implementation
+├── .env.example           # Enhanced environment configuration template
+├── requirements.txt       # Enhanced dependencies with security packages
+├── SECURITY.md            # Comprehensive security documentation
+├── MIGRATION.md           # Migration guide from original to enhanced
+├── README_ENHANCED.md     # Detailed enhanced features documentation
+├── docs/DEPLOYMENT.md     # Production deployment guide
+├── tests/test_security.py # Comprehensive security test suite
+├── MCP_GUIDE.md           # Enhanced MCP integration guide
+└── README.md              # This enhanced overview
+```
 Control the system via AI assistants (Claude, ChatGPT, etc.):
 
 ```bash
