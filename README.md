@@ -49,52 +49,52 @@ RL-A2A Enhanced democratizes multi-agent system development by providing a compr
 - 🔌 **Enhanced MCP Support** - Secure Model Context Protocol for AI assistants
 - ⚡ **Production Architecture** - Dual approach with Docker support and auto-configuration
 - 🗺️ **Environment Management** - Comprehensive .env configuration with security defaults
-- 📡 **WebSocket**: ws://localhost:8000/ws/{session_id}
 
+## 🚀 Enhanced Quick Start
 
-```
-
-## 📁 Repository Structure
-
-```
-RL-A2A/
-├── rla2a.py           # All-in-one system (2000+ lines of everything)
-├── a2a_server.py      # Modular: FastAPI server with RL
-├── agent_a.py         # Modular: Example agent implementation
-├── MCP_GUIDE.md       # Complete MCP integration guide
-├── requirements.txt   # Dependencies
-├── README.md          # This file
-├── .env               # Config (auto-created by setup)
-└── start.py           # Launcher (auto-created by setup)
-```
-
----
-## 🎮 Usage Options
-
-### All-in-One System (rla2a.py)
+### 1. Enhanced Installation
 
 ```bash
-# Complete system with demo agents
-python rla2a.py server --demo-agents 5
+# Clone the repository
+git clone https://github.com/KunjShah01/RL-A2A.git
+cd RL-A2A
 
-# Interactive dashboard only
-python rla2a.py dashboard
+# Switch to enhanced branch (for latest security features)
+git checkout security-fixes-and-enhancements
 
-# MCP server for AI assistants
-python rla2a.py mcp
+# Install enhanced dependencies with security packages
+pip install -r requirements.txt
 
-# Generate HTML report
-python rla2a.py report
-
-# Setup environment
-python rla2a.py setup
+# Setup enhanced environment with security defaults
+python rla2a_enhanced.py setup
 ```
 
-### Modular System (Individual Components)
+### 2. Enhanced Configuration
+
+Copy `.env.example` to `.env` and configure your enhanced settings:
 
 ```bash
-# Advanced server options
-python a2a_server.py                    # Default: localhost:8000
+cp .env.example .env
+```
+
+Edit `.env` with your API keys and security configuration:
+
+```bash
+# Multi-AI Provider API Keys
+OPENAI_API_KEY=your-openai-api-key-here
+ANTHROPIC_API_KEY=your-anthropic-api-key-here
+GOOGLE_API_KEY=your-google-api-key-here
+
+# Enhanced Security Configuration
+SECRET_KEY=your-secret-key-for-jwt-signing
+ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8501
+RATE_LIMIT_PER_MINUTE=60
+
+# System Configuration
+DEFAULT_AI_PROVIDER=openai
+MAX_AGENTS=100
+DEBUG=false
+```
 uvicorn a2a_server:app --host 0.0.0.0   # Public access
 
 # Multiple agents
