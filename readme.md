@@ -14,9 +14,9 @@ RL-A2A aims to democratize multi-agent system development by providing a compreh
 - Enable seamless integration with AI assistants through MCP support
 
 
-## 🚀 Quick Start
+![RL-A2A System Capabilities](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/c78959fd-b966-4e97-8d28-8a158d9bf6d0.png)
 
-### Option 1: All-in-One (Recommended for Beginners)
+![RL-A2A Core Features](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/85c382fd-39a1-408c-9af2-86932736eb52.png)
 
 ```bash
 # Clone and setup
@@ -186,9 +186,9 @@ CMD ["python", "rla2a.py", "server", "--demo-agents", "3"]
 - ✅ **Deployment**: Docker/container friendly
 - ✅ **Customization**: Create new agent files easily
 
-## 📚 API Reference
 
-### A2A Server Endpoints
+![Architecture Comparison](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/20410dab-5eac-41fc-81f5-6fd222091b86.png)
+
 
 #### Core Endpoints (Available in Both Architectures)
 - **GET** `/` - System status
@@ -397,12 +397,12 @@ Once connected, you can use MCP commands like:
 - "Register a new agent called 'explorer'" 
 - "Send positive feedback for agent action XYZ"
 - "Show me the current active agents"
-- "Create an observation for agent at position (1,2,3)"
-- "Create an intelligent agent with OpenAI"
-- "Start the visualization dashboard"
-- "Generate a visualization report"
 
-### Enhanced MCP Server
+## 📈 Performance Visualization
+
+![Multi-Agent Learning Progress](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/96e42532-7c49-47e9-a6ef-4850eb9729e4.png)
+
+*Example of how agents improve their performance over time through reinforcement learning*
 
 The enhanced MCP server (`mcp_server_enhanced.py`) provides additional tools:
 
