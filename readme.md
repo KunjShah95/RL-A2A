@@ -2,17 +2,17 @@
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg) ![Status](https://img.shields.io/badge/status-ready-brightgreen.svg)
 
-**Revolutionary multi-agent system** with both **all-in-one simplicity** and **modular flexibility**. Choose your approach: consolidated single-file system or clean modular architecture.
+## 🎯 Project Aim
 
-## ✨ Features
+RL-A2A aims to democratize multi-agent system development by providing a comprehensive, production-ready platform that bridges the gap between research and real-world applications. The project solves the complexity barrier in agent communication, reinforcement learning integration, and system visualization - enabling developers to focus on agent logic rather than infrastructure.
 
-- 🤖 **Multi-Agent Communication** - WebSocket-based real-time coordination
-- 🧠 **OpenAI Integration** - GPT-powered intelligent decision making
-- 🎨 **3D Visualization** - Interactive Plotly dashboards with Streamlit
-- 📈 **Reinforcement Learning** - Q-learning with adaptive feedback
-- 🔌 **MCP Support** - Model Context Protocol for AI assistants
-- ⚡ **Dual Architecture** - Choose consolidated or modular approach
-- 🐳 **Production Ready** - Docker support and auto-configuration
+**Core Objectives:**
+- Simplify multi-agent system creation with both beginner-friendly and advanced approaches
+- Provide real-time agent communication via WebSocket architecture
+- Integrate AI-powered decision making through OpenAI APIs
+- Deliver comprehensive visualization and monitoring capabilities
+- Enable seamless integration with AI assistants through MCP support
+
 
 ## 🚀 Quick Start
 
@@ -283,11 +283,11 @@ python a2a_server.py &         # Background server
 python agent_a.py              # Test agent
 python rla2a.py report         # Generate test report
 ```
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file
-
+1. **Fork** the repository
+2. **Choose approach**: Modify `rla2a.py` (all-in-one) or individual files (modular)
+3. **Test thoroughly**: Both approaches should work
+4. **Update docs**: Keep README and guides current
+5. **Submit PR**: Include test instructions
 ## 🆘 Support & Community
 
 - 🐛 **Issues**: [GitHub Issues](https://github.com/KunjShah01/RL-A2A/issues)
