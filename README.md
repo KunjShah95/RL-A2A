@@ -291,12 +291,13 @@ GOOGLE_API_KEY=your-gemini-api-key
 DEFAULT_AI_PROVIDER=openai  # or anthropic, google
 ```
 
-**AI Capabilities:**
+**Enhanced AI Capabilities:**
 - 🧪 **OpenAI GPT-4o-mini**: Fast, efficient general intelligence
 - 🤖 **Anthropic Claude**: Advanced reasoning and safety
 - 🔍 **Google Gemini**: Multimodal AI with broad knowledge
 - 🔄 **Automatic Fallback**: Switches providers if one fails
 - 📊 **Performance Tracking**: Monitor success rates and usage
+- 🔒 **Secure Authentication**: JWT tokens and rate limiting
 
 ## 🎨 Enhanced Visualization Dashboard
 
@@ -307,11 +308,12 @@ Interactive Streamlit dashboard featuring:
 - **📈 Performance Metrics** - Rewards, emotions, activity analysis
 - **⚙️ Agent Management** - Register agents, send feedback, control system
 - **📈 Live Analytics** - Auto-refresh charts and system health
-- **💾 Data Export** - Download agent data as CSV
+- **💾 Data Export** - Download agent data as CSV format
 - **🔒 Security Monitoring** - Real-time security status and alerts
+- **🖥️ Multi-dimensional Analysis** - Emotion, action, reward visualization
 
 ![Multi-Agent Learning Progress](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/96e42532-7c49-47e9-a6ef-4850eb9729e4.png)
-*Real-time visualization of agent performance and learning progress*
+*Real-time visualization of multi-agent performance and learning progress*
 
 ## 🔌 Enhanced MCP Integration
 
@@ -326,11 +328,9 @@ python rla2a.py mcp  # Start enhanced MCP server
 - "Create a new agent called explorer with OpenAI provider"
 - "Show me comprehensive system status and security metrics"
 - "Generate a performance report for all active agents"
+- "Switch all agents to use Gemini AI provider"
 
 📈 **Detailed guide**: [MCP_GUIDE.md](MCP_GUIDE.md)
-
-## 📄 Comprehensive API Reference
-
 ### Core API Endpoints
 
 | Endpoint | Method | Description | Enhanced Features |
