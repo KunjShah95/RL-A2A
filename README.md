@@ -4,7 +4,19 @@
 
 An enhanced, secure Agent-to-Agent (A2A) communication system with reinforcement learning, multi-AI provider support, real-time 3D visualization, and comprehensive security features.
 
-## 🚀 What's New in v4.0 Enhanced
+## 📺 Project Overview & Objectives
+
+RL-A2A Enhanced democratizes multi-agent system development by providing a comprehensive, production-ready platform that bridges research and real-world applications. Enhanced with enterprise-grade security, multi-AI provider support, and advanced monitoring capabilities.
+
+**Core Objectives:**
+- Simplify multi-agent system creation with security-first approach
+- Provide real-time agent communication via secure WebSocket architecture  
+- Integrate multi-AI provider decision making (OpenAI, Claude, Gemini)
+- Deliver comprehensive visualization and security monitoring
+- Enable seamless integration with AI assistants through enhanced MCP support
+
+![RL-A2A System Capabilities](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/2f11457e-e527-4a9d-8aa4-e55a883d6aba.png)
+![RL-A2A Core Features](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/5da08f4d-c65e-42a2-a5e5-582d02c7fc22.png)
 
 ### 🔒 **Security Enhancements**
 - **Data Poisoning Protection**: Input validation, sanitization, and size limits
@@ -25,19 +37,7 @@ An enhanced, secure Agent-to-Agent (A2A) communication system with reinforcement
 - **Analytics Dashboard**: Comprehensive performance tracking
 - **Multi-dimensional Analysis**: Emotion, action, reward, and velocity visualization
 
-## 📺 Project Overview & Objectives
 
-RL-A2A Enhanced democratizes multi-agent system development by providing a comprehensive, production-ready platform that bridges research and real-world applications. Enhanced with enterprise-grade security, multi-AI provider support, and advanced monitoring capabilities.
-
-**Core Objectives:**
-- Simplify multi-agent system creation with security-first approach
-- Provide real-time agent communication via secure WebSocket architecture  
-- Integrate multi-AI provider decision making (OpenAI, Claude, Gemini)
-- Deliver comprehensive visualization and security monitoring
-- Enable seamless integration with AI assistants through enhanced MCP support
-
-![RL-A2A System Capabilities](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/2f11457e-e527-4a9d-8aa4-e55a883d6aba.png)
-![RL-A2A Core Features](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/5da08f4d-c65e-42a2-a5e5-582d02c7fc22.png)
 
 ## ✨ Enhanced Features
 
@@ -70,12 +70,6 @@ python rla2a_enhanced.py setup
 ```
 
 ### 2. Enhanced Configuration
-
-Copy `.env.example` to `.env` and configure your enhanced settings:
-
-```bash
-cp .env.example .env
-```
 
 Edit `.env` with your API keys and security configuration:
 
@@ -119,17 +113,14 @@ python rla2a_enhanced.py dashboard
 
 ```
 RL-A2A/
-├── rla2a_enhanced.py       # Enhanced secure system with multi-AI support
 ├── rla2a.py               # Original system (deprecated in favor of enhanced)
 ├── a2a_server.py          # Modular: FastAPI server with RL
 ├── agent_a.py             # Modular: Example agent implementation
-├── .env.example           # Enhanced environment configuration template
+├── .env                   # Enhanced environment configuration template
 ├── requirements.txt       # Enhanced dependencies with security packages
 ├── SECURITY.md            # Comprehensive security documentation
 ├── MIGRATION.md           # Migration guide from original to enhanced
-├── README_ENHANCED.md     # Detailed enhanced features documentation
 ├── docs/DEPLOYMENT.md     # Production deployment guide
-├── tests/test_security.py # Comprehensive security test suite
 ├── MCP_GUIDE.md           # Enhanced MCP integration guide
 └── README.md              # This enhanced overview
 ```
