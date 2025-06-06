@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 RL-A2A: Complete Agent-to-Agent Communication System
 All-in-one file with A2A server, OpenAI agents, visualization, and MCP support
