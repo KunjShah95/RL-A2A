@@ -331,6 +331,9 @@ python rla2a.py mcp  # Start enhanced MCP server
 - "Switch all agents to use Gemini AI provider"
 
 📈 **Detailed guide**: [MCP_GUIDE.md](MCP_GUIDE.md)
+
+## 📄 Comprehensive API Reference
+
 ### Core API Endpoints
 
 | Endpoint | Method | Description | Enhanced Features |
@@ -383,11 +386,9 @@ services:
     depends_on: [a2a-server]
 ```
 
-### Environment Configuration
-
-Create a production `.env` file:
+### Production Environment Configuration
 ```bash
-# Production Configuration
+# Production .env settings
 DEBUG=false
 LOG_LEVEL=WARNING
 A2A_HOST=0.0.0.0
@@ -399,7 +400,6 @@ SECRET_KEY=your-production-secret-key
 ALLOWED_ORIGINS=https://yourdomain.com
 ENABLE_SECURITY=true
 ```
-
 ## 🔧 Development Guide
 
 ### Creating Custom Agents
