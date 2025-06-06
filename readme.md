@@ -13,10 +13,23 @@ RL-A2A aims to democratize multi-agent system development by providing a compreh
 - Deliver comprehensive visualization and monitoring capabilities
 - Enable seamless integration with AI assistants through MCP support
 
-
 ![RL-A2A System Capabilities](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/c78959fd-b966-4e97-8d28-8a158d9bf6d0.png)
 
 ![RL-A2A Core Features](https://agents-storage.nyc3.digitaloceanspaces.com/quickchart/85c382fd-39a1-408c-9af2-86932736eb52.png)
+
+## ✨ Features
+
+- 🤖 **Multi-Agent Communication** - WebSocket-based real-time coordination
+- 🧠 **OpenAI Integration** - GPT-powered intelligent decision making
+- 🎨 **3D Visualization** - Interactive Plotly dashboards with Streamlit
+- 📈 **Reinforcement Learning** - Q-learning with adaptive feedback
+- 🔌 **MCP Support** - Model Context Protocol for AI assistants
+- ⚡ **Dual Architecture** - Choose consolidated or modular approach
+- 🐳 **Production Ready** - Docker support and auto-configuration
+
+## 🚀 Quick Start
+
+### Option 1: All-in-One (Recommended for Beginners)
 
 ```bash
 # Clone and setup
@@ -27,7 +40,7 @@ cd RL-A2A
 python rla2a.py setup
 
 # Start complete system (server + dashboard + 3 demo agents)
-python start.py
+python rla2a.py server --demo-agents 3
 ```
 
 ### Option 2: Modular (Recommended for Development)
@@ -35,19 +48,6 @@ python start.py
 ```bash
 # Install dependencies
 pip install -r requirements.txt
-
-# Terminal 1: Start A2A server
-python a2a_server.py
-
-# Terminal 2: Start an agent
-python agent_a.py
-
-# Terminal 3 (optional): Start dashboard
-python rla2a.py dashboard
-```
-
-**Access Points:**
-- 🎨 **Dashboard**: http://localhost:8501
 - 🔗 **API Documentation**: http://localhost:8000/docs
 - 📡 **WebSocket**: ws://localhost:8000/ws/{session_id}
 
