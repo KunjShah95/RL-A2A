@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Agent A - Example implementation for A2A Protocol
 Demonstrates autonomous agent behavior with the A2A communication system
